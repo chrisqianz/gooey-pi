@@ -4,6 +4,7 @@ import { act } from 'react'
 import { createRoot, type Root } from 'react-dom/client'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Sidebar } from '../../src/components/Sidebar'
+import { I18nProvider } from '../../src/lib/i18n'
 import { sessionAttentionSignature } from '../../src/app/session-attention'
 import type { ProjectRecord, SessionRecord } from '../../src/types/api'
 
@@ -323,6 +324,28 @@ describe('sidebar archive', () => {
     expect(onArchiveSession).toHaveBeenCalledOnce()
     expect(onArchiveSession).toHaveBeenCalledWith({ ...session, status: 'running' })
     expect(document.body.querySelector('[role="dialog"]')).toBeNull()
+  })
+
+  it('localises the confirmation for a chat that is still working', async () => {
+    const onArchiveSession = vi.fn(async () => undefined)
+    await act(async () => {
+      root.render(
+        <I18nProvider preference="zh-CN">
+          <Sidebar {...archiveProps(onArchiveSession)} sessions={[{ ...session, status: 'running' as const }]} />
+        </I18nProvider>,
+      )
+    })
+
+    await press(container.querySelector('[aria-label="Archive Session"]')!)
+    const dialog = document.body.querySelector('[role="dialog"]')
+    expect(dialog?.textContent).toContain('归档进行中的聊天')
+    expect(dialog?.textContent).toContain('「Session」还在工作中')
+    expect(dialog?.textContent).toContain('设置 › 已归档的聊天')
+
+    const confirm = [...document.body.querySelectorAll<HTMLButtonElement>('.modal__footer button')].find((button) => button.textContent === '归档')!
+    await press(confirm)
+    expect(onArchiveSession).toHaveBeenCalledOnce()
+    expect(onArchiveSession).toHaveBeenCalledWith({ ...session, status: 'running' })
   })
 })
 

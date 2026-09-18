@@ -6,6 +6,7 @@ type MessageValues = Record<string, string | number>
 
 const englishCatalog = {
   'common.reload': 'Reload GooeyPi',
+  'common.cancel': 'Cancel',
   'nav.projects': 'Projects',
   'nav.activity': 'Activity',
   'nav.scheduled': 'Scheduled',
@@ -58,6 +59,11 @@ const englishCatalog = {
   'archived.empty': 'Nothing archived yet. Use the archive control on a chat in the sidebar to hide it without deleting it.',
   'archived.restore': 'Restore',
   'archived.restoring': 'Restoring…',
+  'archive.running.title': 'Archive running chat',
+  'archive.running.body': '“{title}” is still working. Archiving stops the agent and closes the terminal or browser opened for this chat. You can restore it from Settings › Archived chats.',
+  'archive.running.confirm': 'Archive',
+  'archive.doneToast': 'Archived. Find it in Settings › Archived chats.',
+  'archive.restoredToast': 'Session restored.',
 } as const satisfies Record<string, Message>
 
 export type MessageKey = keyof typeof englishCatalog
@@ -116,6 +122,12 @@ const simplifiedChineseCatalog: Partial<Record<MessageKey, Message>> = {
   'archived.empty': '还没有归档的聊天。在侧边栏会话上点击归档图标即可隐藏，不会删除文件。',
   'archived.restore': '恢复',
   'archived.restoring': '恢复中…',
+  'archive.running.title': '归档进行中的聊天',
+  'archive.running.body': '「{title}」还在工作中。归档会停止这个会话的 agent，并关闭它为这个会话打开的终端和浏览器。之后可以在「设置 › 已归档的聊天」里恢复。',
+  'archive.running.confirm': '归档',
+  'archive.doneToast': '已归档。可在「设置 › 已归档的聊天」里找到。',
+  'archive.restoredToast': '会话已恢复。',
+  'common.cancel': '取消',
 }
 
 function browserLanguages(): readonly string[] {
