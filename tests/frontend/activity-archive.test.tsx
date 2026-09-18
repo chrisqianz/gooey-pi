@@ -137,7 +137,7 @@ describe('archived activity cleanup', () => {
     expect(clearSessionAttention).toHaveBeenCalledWith(activeSession)
     expect(closeTerminalForSession).toHaveBeenCalledWith(activeSession.filePath)
     expect(sessions[0]).toMatchObject({ id: activeSession.id, archived: true, unread: false })
-    expect(setToast).toHaveBeenCalledWith('Session archived.')
+    expect(setToast).toHaveBeenCalledWith('Archived. Find it in Settings › Archived chats.')
   })
 
   it('recreates the browser host when archiving the open session', async () => {

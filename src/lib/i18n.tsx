@@ -26,6 +26,7 @@ const englishCatalog = {
   'settings.pets': 'Pets',
   'settings.browser': 'Browser',
   'settings.terminal': 'Terminal',
+  'settings.archived': 'Archived chats',
   'settings.privacy': 'Privacy',
   'settings.about': 'About',
   'appearance.title': 'Appearance',
@@ -51,6 +52,12 @@ const englishCatalog = {
   'appearance.motion.title': 'Motion',
   'appearance.motion.reduce': 'Reduce interface motion',
   'appearance.motion.description': 'Minimize panel transitions and animated status indicators.',
+  'archived.title': 'Archived chats',
+  'archived.description': 'Archived chats stay saved on this device and leave your project lists and Activity. Restore one to bring it back.',
+  'archived.count': { one: '{count} archived chat', other: '{count} archived chats' },
+  'archived.empty': 'Nothing archived yet. Use the archive control on a chat in the sidebar to hide it without deleting it.',
+  'archived.restore': 'Restore',
+  'archived.restoring': 'Restoring…',
 } as const satisfies Record<string, Message>
 
 export type MessageKey = keyof typeof englishCatalog
@@ -77,6 +84,7 @@ const simplifiedChineseCatalog: Partial<Record<MessageKey, Message>> = {
   'settings.pets': '宠物',
   'settings.browser': '浏览器',
   'settings.terminal': '终端',
+  'settings.archived': '已归档的聊天',
   'settings.privacy': '隐私',
   'settings.about': '关于',
   'appearance.title': '外观',
@@ -102,6 +110,12 @@ const simplifiedChineseCatalog: Partial<Record<MessageKey, Message>> = {
   'appearance.motion.title': '动效',
   'appearance.motion.reduce': '减少界面动效',
   'appearance.motion.description': '尽量减少面板过渡和动态状态指示。',
+  'archived.title': '已归档的聊天',
+  'archived.description': '归档的聊天仍保存在本机，只会从项目列表和动态中移除，恢复即可回到列表。',
+  'archived.count': { one: '{count} 个归档聊天', other: '{count} 个归档聊天' },
+  'archived.empty': '还没有归档的聊天。在侧边栏会话上点击归档图标即可隐藏，不会删除文件。',
+  'archived.restore': '恢复',
+  'archived.restoring': '恢复中…',
 }
 
 function browserLanguages(): readonly string[] {

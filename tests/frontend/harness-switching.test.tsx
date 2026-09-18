@@ -750,6 +750,9 @@ describe('harness settings surfaces', () => {
         onSetAllProvidersDisabled={noopAsync}
         onSetModelEnabled={noopAsync}
         onStartProviderOAuth={noopAsync}
+        archivedSessions={[]}
+        projects={[]}
+        onRestoreSession={noopAsync}
       />
     )
 

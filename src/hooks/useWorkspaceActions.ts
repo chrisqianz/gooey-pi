@@ -242,7 +242,7 @@ export function createWorkspaceActions(getDeps: () => WorkspaceActionsDeps) {
         resetBrowserView()
         newSession()
       }
-      setToast(archived ? 'Session archived.' : 'Session restored.')
+      setToast(archived ? 'Archived. Find it in Settings › Archived chats.' : 'Session restored.')
     } catch (error) { reportError(error) }
   }
   const addProject = async () => {
